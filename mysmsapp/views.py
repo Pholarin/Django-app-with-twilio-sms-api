@@ -13,7 +13,7 @@ def homepage(request):
 
 
 def broadcast_sms(request):
-    print("Send found")
+
     if request.method=='POST':
     
         raw_recipients=request.POST['numbers']
