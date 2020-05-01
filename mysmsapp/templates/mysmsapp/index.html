@@ -14,7 +14,7 @@
 <body>
          <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">BroadcastSMS</a>
+        <a class="navbar-brand" href="{%url 'mysmsapp:index'%}">BroadcastSMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
           aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -37,30 +37,25 @@
       <!--/.Navbar -->
     <div class="container">
     
-    
-  <div class="row"> 
-  <div class="col-lg-6"> 
+
     <p><h2>Hello</h2></p>
 
-<div >
-<form  method="POST" action="{%url 'mysmsapp:blast_broadcast'%}">
 
+<form  method="POST" enctype="multipart/form-data" action="{%url 'mysmsapp:blast_broadcast'%}">
     {%csrf_token%}
-    <label for="num">Recipients Numbers:</label>
-    <input class="form-control" type="textarea" name="numbers" id="num">
-
+ 
+    <label for="num">Recipients Numbers <span style="color: red; font-weight: 700;">[Excel File]</span>:</label>
+    <input class="" type="file" name="numbers"  required id="num">  
+    <br/>
     <label for="msg">Message:</label>
-    <input class="form-control" type="textarea" name="message" id="msg">
-<br>
+    <textarea class="form-control form-rounded" required name="message" id="msg" row="5" > </textarea>
+    <br/>
     <button type="submit" name="send">Send</button>
 
 </form>
+<br>
+<p><span style="color: red; font-weight: 500;">{{error}}</span></p>
 </div>
-</div>
-</div>
-
-
-
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
